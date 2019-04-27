@@ -3,17 +3,23 @@
 #include "Chesstris.h"
 #include "IBoard.h"
 
+/// The chesstris game board
 class ChesstrisBoard : public IBoard
 {
 
 private:
 
-	typedef char TILE;
+	typedef char TILE; /// representing what is on this tile
 	typedef int POSITION;
 	typedef char PIECE;
 
-	TILE tiles_[64];
-	MOVE moves_[64];
+	/// The board is made of 8x8 tiles
+	/// At this point the tile is 
+	TILE tiles_[8][8];
+
+	/// \todo This is a temporary patch because the Board is keeping the move marks acting actually as a Display.
+	/// The moves stored here are displayed so the user can see his optional moves.
+	MOVE moves_[8][8]; 
 
 public:
 
@@ -21,6 +27,7 @@ public:
 
 	virtual ~ChesstrisBoard();
 
+	/// Draw the board.
 	virtual void draw();
 
 	virtual void EndShow();

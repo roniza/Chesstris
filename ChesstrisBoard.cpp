@@ -17,7 +17,7 @@ void ChesstrisBoard::ClearPos(int x, int y)
 	assert(y >= 0);
 	assert(y < 8);
 
-	tiles_[y * 8 + x] = EMPTY;
+	tiles_[y][x] = EMPTY;
 }
 
 void ChesstrisBoard::MarkStepedPos(int x, int y)
@@ -27,7 +27,7 @@ void ChesstrisBoard::MarkStepedPos(int x, int y)
 	assert(y >= 0);
 	assert(y < 8);
 
-	tiles_[y * 8 + x] = STEPPED;
+	tiles_[y][x] = STEPPED;
 }
 void ChesstrisBoard::SetKnightAtPos(int x, int y)
 {
@@ -36,7 +36,7 @@ void ChesstrisBoard::SetKnightAtPos(int x, int y)
 	assert(y >= 0);
 	assert(y < 8);
 
-	tiles_[y * 8 + x] = KNIGHT;
+	tiles_[y][x] = KNIGHT;
 }
 
 
@@ -54,8 +54,8 @@ void ChesstrisBoard::Clear()
 {
 	for (int i = 0; i < 8; i++) {
 		for (int j = 0; j < 8; j++) {
-			tiles_[j + 8 * i] = EMPTY;
-			moves_[j + 8 * i] = 0;
+			tiles_[j][i] = EMPTY;
+			moves_[j][i] = 0;
 		}
 	}
 }
@@ -66,7 +66,7 @@ void ChesstrisBoard::draw() {
 		for (int j = 0; j < 8; j++)
 		{
 			int pos = j + 8 * i;
-			cout << "[" << (moves_[pos] > 0 ? moves_[pos] : tiles_[pos]) << "] ";
+			cout << "[" << (moves_[j][i] > 0 ? moves_[j][i] : tiles_[j][i]) << "] ";
 		}
 		cout << endl << endl;
 	}
@@ -92,7 +92,7 @@ bool ChesstrisBoard::IsClearPos(int x, int y)
 	assert(y >= 0);
 	assert(y < 8);
 
-	return (EMPTY == tiles_[y * 8 + x]);
+	return (EMPTY == tiles_[y][x]);
 }
 
 bool ChesstrisBoard::IsValidPos(int x, int y)
@@ -111,13 +111,13 @@ void ChesstrisBoard::MarkMoveAtPos(int x, int y, MOVE m)
 	assert(y >= 0);
 	assert(y < 8);
 
-	moves_[x + 8 * y] = m;
+	moves_[y][x] = m;
 }
 void ChesstrisBoard::ClearMoves()
 {
 	for (int i = 0; i < 8; i++) {
 		for (int j = 0; j < 8; j++) {
-			moves_[j + 8 * i] = 0;
+			moves_[j][i] = 0;
 		}
 	}
 }

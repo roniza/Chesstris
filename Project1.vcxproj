@@ -119,7 +119,6 @@
     <ClInclude Include="Chesstris.h" />
     <ClInclude Include="ChesstrisBoard.h" />
     <ClInclude Include="ChesstrisGame.h" />
-    <ClInclude Include="Header.h" />
     <ClInclude Include="IBoard.h" />
     <ClInclude Include="IGame.h" />
     <ClInclude Include="IPiece.h" />
