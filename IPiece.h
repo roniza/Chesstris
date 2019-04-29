@@ -2,6 +2,7 @@
 
 class IBoard;
 
+/// An bastract game piece class
 class IPiece
 {
 	//IBoard* _board;

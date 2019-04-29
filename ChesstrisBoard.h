@@ -14,11 +14,11 @@ private:
 	typedef char PIECE;
 
 	/// The board is made of 8x8 tiles
-	/// At this point the tile is 
 	TILE tiles_[8][8];
 
+	/// Used for display of the moves.
 	/// \todo This is a temporary patch because the Board is keeping the move marks acting actually as a Display.
-	/// The moves stored here are displayed so the user can see his optional moves.
+	/// consider adding a Display class
 	MOVE moves_[8][8]; 
 
 public:
@@ -30,13 +30,18 @@ public:
 	/// Draw the board.
 	virtual void draw();
 
+	/// Display something at the end of the game
 	virtual void EndShow();
 
+	/// Get the maximum X
+	int MaxX();
+	/// Get the maximum Y
 	int MaxY();
 
-	int MaxX();
-
+	/// Clear the board
 	void Clear();
+
+
 	void ClearPos(int x, int y);
 	void MarkStepedPos(int x, int y);
 	void SetKnightAtPos(int x, int y);

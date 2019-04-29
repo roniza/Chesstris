@@ -21,9 +21,10 @@ int main()
 	while (!game.ended())
 	{
 		game.draw();
-		MOVE move;
 
+		MOVE move;
 		cin >> move;
+
 		if (game.isValidMove(move))
 		{
 			game.move(move);

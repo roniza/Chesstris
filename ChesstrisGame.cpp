@@ -26,39 +26,22 @@ public:
 	}
 };
 
+/// The possible moves
 MoveType moves[8]
-{
-	{ 1,-2}, 
+{        
+	{ 1,-2},         
+	{ 2,-1},       
+	{ 2, 1}, 
 	{ 1, 2},
-
 	{-1, 2}, 
-	{-1,-2},
-	{ 2, 1},
-	{ 2,-1},
 	{-2, 1},
-	{-2,-1}
+	{-2,-1},
+	{-1,-2}
 };
-
-void ChesstrisGame::North() {
-	if (posY > 0)
-	{
-		board_.ClearPos(posX, posY);
-		board_.MarkStepedPos(posX, posY);
-		posY--;
-		board_.SetKnightAtPos(posX, posY);
-	}
-
-}
-
-void ChesstrisGame::South() {
-	board_.ClearPos(posX, posY);
-	board_.MarkStepedPos(posX, posY);
-	posY += 2; posX++;
-	board_.SetKnightAtPos(posX, posY);
-}
 
 ChesstrisGame::ChesstrisGame()
 	: ended_(false)
+	, _numMoves(0)
 	, board_()
 	, posX(4)
 	, posY(4)
@@ -82,6 +65,7 @@ bool ChesstrisGame::ended() {
 	return ended_;
 }
 
+/// Translates the move to position and see if the position is free
 bool ChesstrisGame::isValidMove(const MOVE move)
 {
 	assert(move > '0');
@@ -89,6 +73,12 @@ bool ChesstrisGame::isValidMove(const MOVE move)
 	int mpx = posX + moves[mi].x();
 	int mpy = posY + moves[mi].y();
 	return isValidMovePos(mpx, mpy);
+}
+
+void ChesstrisGame::EvaluateState()
+{
+	/// \todo placeholder
+	ended_ = (10 < _numMoves++);
 }
 
 void ChesstrisGame::move(const MOVE move)
@@ -100,6 +90,8 @@ void ChesstrisGame::move(const MOVE move)
 	posX += moves[move - '1'].x();
 	posY += moves[move - '1'].y();
 	board_.SetKnightAtPos(posX, posY);
+	// Now check the new position
+	EvaluateState();
 }
 
 void ChesstrisGame::EndShow() {

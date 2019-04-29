@@ -4,7 +4,8 @@
 /// Written by Roni Zaharia
 
 // A move in the game.
-// The player at his turn makes a move
+// The player at his turn makes a move.
+// 
 typedef char MOVE;
 
 

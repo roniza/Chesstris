@@ -60,6 +60,9 @@ void ChesstrisBoard::Clear()
 	}
 }
 
+/// The draw implementation uses the standard output.
+/// Every tile is marked as [ ]
+/// And can be eithr empty [ ] or stepped [*] or [K] Meaning the Knight is standing on it
 void ChesstrisBoard::draw() {
 	for (int i = 0; i < 8; i++)
 	{
