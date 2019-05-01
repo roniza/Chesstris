@@ -54,8 +54,8 @@ void ChesstrisBoard::Clear()
 {
 	for (int i = 0; i < 8; i++) {
 		for (int j = 0; j < 8; j++) {
-			tiles_[j][i] = EMPTY;
-			moves_[j][i] = 0;
+			tiles_[i][j] = EMPTY;
+			moves_[i][j] = 0;
 		}
 	}
 }
@@ -69,7 +69,7 @@ void ChesstrisBoard::draw() {
 		for (int j = 0; j < 8; j++)
 		{
 			int pos = j + 8 * i;
-			cout << "[" << (moves_[j][i] > 0 ? moves_[j][i] : tiles_[j][i]) << "] ";
+			cout << "[" << (moves_[i][j] > 0 ? moves_[i][j] : tiles_[i][j]) << "] ";
 		}
 		cout << endl << endl;
 	}
@@ -120,7 +120,7 @@ void ChesstrisBoard::ClearMoves()
 {
 	for (int i = 0; i < 8; i++) {
 		for (int j = 0; j < 8; j++) {
-			moves_[j][i] = 0;
+			moves_[i][j] = 0;
 		}
 	}
 }
