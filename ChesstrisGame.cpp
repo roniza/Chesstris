@@ -41,10 +41,22 @@ MoveType moves[8]
 	{-1,-2}
 };
 
+void Banner() {
+	cout <<
+		" _____ _              _____    _     " << endl <<
+		"|     | |_ ___ ___ __|_   _|__|_|___ " << endl <<
+		"|   --|   | -_|_ -|_ -|| ||  _| |_ -|" << endl <<
+		"|_____|_|_|___|___|___||_||_| |_|___|" << endl << endl;
+                                     
+
+
+
+}
 // Ctor
 // Initialize all member variables
-ChesstrisGame::ChesstrisGame()
-	: _ended(false)
+ChesstrisGame::ChesstrisGame(int score_len)
+	: _SCORING_LEN(score_len) 
+	, _ended(false)
 	, _numMoves(0)
 	, _score(0)
 	, _lastMovePoints(0)
@@ -60,6 +72,9 @@ IBoard& ChesstrisGame::getBoard()
 
 void ChesstrisGame::start()
 {
+	Banner();
+	cout << "Create rows of " << _SCORING_LEN << " *'s or more ..." << endl << endl;
+
 	_board.Clear();
 	posX = 4;
 	posY = 4;
@@ -74,7 +89,9 @@ bool ChesstrisGame::ended() {
 /// Translates the move to position and see if the position is free
 bool ChesstrisGame::isValidMove(const MOVE move)
 {
-	assert(move > '0');
+	if (move < '1' || move > '8')
+		return false;
+
 	int mi = move - '1';
 	int mpx = posX + moves[mi].x();
 	int mpy = posY + moves[mi].y();
@@ -120,8 +137,8 @@ void ChesstrisGame::EvaluateState()
 	/// Then we add the counts of oposite directions and if its above 3 (+1) where the Knight stands
 	/// then its a score
 	for (int i = 0; i < 4; i++) {
-		int n = count[i] + count[i + 4];
-		if (n > 2) /// meaning 3 neighboars in a row
+		int n = count[i] + count[i + 4] + 1; 
+		if (n >= _SCORING_LEN)
 		{
 			_lastMovePoints += n;
 			{

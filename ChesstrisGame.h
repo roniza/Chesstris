@@ -8,6 +8,9 @@ using namespace std;
 /// Chesstris Game
 class ChesstrisGame : public IGame {
 
+	// How many 
+	const int _SCORING_LEN;
+
 	bool _ended; // Set to true when game ended
 
 	int _numMoves; // Counts the number of moves
@@ -34,7 +37,7 @@ class ChesstrisGame : public IGame {
 	int MarkValidMoves();
 
 public:
-	ChesstrisGame();
+	ChesstrisGame(int score_len=4);
 
 	virtual IBoard& getBoard();
 

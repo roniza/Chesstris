@@ -8,10 +8,23 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
+	/// Command line argument: length of row that gives a score
+	/// Default = 4
+	int scoring_length = 4;
+	if (argc > 1) {
+		if (strlen(argv[1]) == 1 && *argv[1] > '1' && *argv[1] < '9')
+			scoring_length = *argv[1] - '0';
+		else
+		{
+			cout << "Invalid command line arguments" << endl;
+			exit(0);
+		}
+	}
+
 	// Create a new Chestris game
-	ChesstrisGame TheGame;
+	ChesstrisGame TheGame(scoring_length);
 
 	IGame& game = (IGame&)TheGame;
 
@@ -22,8 +35,7 @@ int main()
 	{
 		game.draw();
 
-		MOVE move;
-		cin >> move;
+		MOVE move(cin.get());
 
 		if (game.isValidMove(move))
 		{
