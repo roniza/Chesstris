@@ -27,6 +27,8 @@ public:
 };
 
 /// The possible moves
+/// The order of the entires are important because they control the 
+/// order of how they are displayed
 MoveType moves[8]
 {        
 	{ 1,-2},         
@@ -39,6 +41,8 @@ MoveType moves[8]
 	{-1,-2}
 };
 
+// Ctor
+// Initialize all member variables
 ChesstrisGame::ChesstrisGame()
 	: _ended(false)
 	, _numMoves(0)
@@ -47,8 +51,7 @@ ChesstrisGame::ChesstrisGame()
 	, _board()
 	, posX(4)
 	, posY(4)
-{
-}
+{}
 
 IBoard& ChesstrisGame::getBoard()
 {
@@ -61,6 +64,7 @@ void ChesstrisGame::start()
 	posX = 4;
 	posY = 4;
 	_board.SetKnightAtPos(posX, posY);
+	MarkValidMoves();
 }
 
 bool ChesstrisGame::ended() {
@@ -78,6 +82,7 @@ bool ChesstrisGame::isValidMove(const MOVE move)
 }
 
 /// Check the directions and see how many stepped tiles are there
+/// Calculate scope and update the board
 void ChesstrisGame::EvaluateState()
 {
 	/// There are 8 directions from the current position
@@ -149,16 +154,45 @@ void ChesstrisGame::move(const MOVE move)
 {
 	assert(isValidMove(move));
 
+	// Make the move
 	_board.MarkStepedPos(posX, posY);
 	int mi = move - '1';
 	posX += moves[move - '1'].x();
 	posY += moves[move - '1'].y();
 	_board.SetKnightAtPos(posX, posY);
+	
 	// Now check the new position
+	// and prepare the next move
+	
 	EvaluateState();
+
+	// Clear the moves of last turn
+	_board.ClearMoves();
+
+	// Mark available moves and see if there's any at all
+	_ended = (MarkValidMoves() == 0);
+}
+
+int ChesstrisGame::MarkValidMoves()
+{
+	// Mark the valid moves for this turn
+	// If there are no valid moves the game is over
+	int numValidMoves = 0; // for now
+	for (int i = 0; i < DIM_OF(moves); i++)
+	{
+		int mpx = posX + moves[i].x();
+		int mpy = posY + moves[i].y();
+		if (isValidMovePos(mpx, mpy))
+		{
+			_board.MarkMoveAtPos(mpx, mpy, '1' + i);
+			numValidMoves++; // Ok, there's a valid move
+		}
+	}
+	return numValidMoves;
 }
 
 void ChesstrisGame::EndShow() {
+	draw();
 	cout << "The End!" << endl;
 }
 
@@ -169,18 +203,7 @@ bool ChesstrisGame::isValidMovePos(int x, int y)
 
 void ChesstrisGame::draw() 
 {
-	_board.ClearMoves();
-	
-	for (int i = 0; i < DIM_OF(moves); i++)
-	{
-		int mpx = posX + moves[i].x();
-		int mpy = posY + moves[i].y();
-		if (isValidMovePos(mpx, mpy))
-		{
-			_board.MarkMoveAtPos(mpx, mpy, '1' + i);
-		}
-	}
-
-	cout << endl << "Score: " << _score << "\tLast move points: " << _lastMovePoints << endl;
+	// Check for end of game
+	cout << endl << "Score: [" << _score << "] - Last move points: [" << _lastMovePoints << "]" << endl;
 	_board.draw();
 }
