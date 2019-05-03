@@ -4,6 +4,21 @@
 
 #define DIM_OF(_A_) sizeof(_A_)/sizeof(_A_[0])
 
+/*
+ * ChessTris is a board game played on 8x8 Chess board with a single Knight.
+ * The game is somewhat similar to 4-in-a-row.
+ * In every move the position of the knight is marked with a *
+ * The puporse of the game is to mark rows, columns or diagonals of 4 or more adjecent tiles.
+ */
+
+void ChesstrisGame::Banner() {
+	cout <<
+		" _____ _              _____    _     " << endl <<
+		"|     | |_ ___ ___ __|_   _|__|_|___ " << endl <<
+		"|   --|   | -_|_ -|_ -|| ||  _| |_ -|" << endl <<
+		"|_____|_|_|___|___|___||_||_| |_|___|" << endl << endl;
+}
+
 //template <int _X_=0, int _Y_=0>
 class MoveType {
 	int X, Y;
@@ -41,17 +56,6 @@ MoveType moves[8]
 	{-1,-2}
 };
 
-void Banner() {
-	cout <<
-		" _____ _              _____    _     " << endl <<
-		"|     | |_ ___ ___ __|_   _|__|_|___ " << endl <<
-		"|   --|   | -_|_ -|_ -|| ||  _| |_ -|" << endl <<
-		"|_____|_|_|___|___|___||_||_| |_|___|" << endl << endl;
-                                     
-
-
-
-}
 // Ctor
 // Initialize all member variables
 ChesstrisGame::ChesstrisGame(int score_len)

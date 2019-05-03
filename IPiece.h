@@ -2,7 +2,8 @@
 
 class IBoard;
 
-/// An bastract game piece class
+/// An abstract game piece class.
+/// Currently not in use.
 class IPiece
 {
 	//IBoard* _board;

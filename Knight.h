@@ -2,7 +2,8 @@
 
 #include "IPiece.h"
 
-/// A Knight game piece
+/// A Knight game piece.
+/// Currently not in use.
 class Knight : public IPiece
 {
 public:

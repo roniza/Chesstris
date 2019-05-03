@@ -30,11 +30,11 @@ class ChesstrisGame : public IGame {
 	// Evaluate state after move
 	void EvaluateState();
 
-	// Clear the steps in the direction (see Evaluate State)
-	void ClearDirection(int i, int n, int m);
-
 	// Return number of availale valid moves
 	int MarkValidMoves();
+
+	// Display the game banner
+	void Banner();
 
 public:
 	ChesstrisGame(int score_len=4);
