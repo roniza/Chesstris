@@ -3,53 +3,58 @@
 #include "Chesstris.h"
 #include "IBoard.h"
 
-/// The chesstris game board
-class ChesstrisBoard : public IBoard
-{
+namespace Chesstris {
 
-private:
+	/// The chesstris game board
+	class ChesstrisBoard : public IBoard
+	{
 
-	typedef char TILE; /// representing what is on this tile
-	typedef int POSITION;
-	typedef char PIECE;
+	private:
 
-	/// The board is made of 8x8 tiles
-	TILE tiles_[8][8];
+		typedef char TILE; /// representing what is on this tile
+		typedef int POSITION;
+		typedef char PIECE;
 
-	/// Used for display of the moves.
-	/// \todo This is a temporary patch because the Board is keeping the move marks acting actually as a Display.
-	/// consider adding a Display class
-	MOVE moves_[8][8]; 
+		/// The board is made of 8x8 tiles
+		TILE tiles_[8][8];
 
-public:
+		/// Used for display of the moves.
+		/// \todo This is a temporary patch because the Board is keeping the move marks acting actually as a Display.
+		/// consider adding a Display class
+		MOVE moves_[8][8];
 
-	ChesstrisBoard();
+	public:
 
-	virtual ~ChesstrisBoard();
+		ChesstrisBoard();
 
-	/// Draw the board.
-	virtual void draw();
+		virtual ~ChesstrisBoard();
 
-	/// Display something at the end of the game
-	virtual void EndShow();
+		/// Draw the board.
+		virtual void draw();
 
-	/// Get the maximum X
-	int MaxX();
-	/// Get the maximum Y
-	int MaxY();
+		/// Display something at the end of the game
+		virtual void EndShow();
 
-	/// Clear the board
-	void Clear();
+		/// Get the maximum X
+		int MaxX();
+		/// Get the maximum Y
+		int MaxY();
+
+		/// Clear the board
+		void Clear();
 
 
-	void ClearPos(int x, int y);
-	void MarkStepedPos(int x, int y);
-	void SetKnightAtPos(int x, int y);
-	bool IsClearPos(int x, int y);
-	bool IsValidPos(int x, int y);
+		void ClearPos(int x, int y);
+		void MarkStepedPos(int x, int y);
+		void SetKnightAtPos(int x, int y);
+		bool IsClearPos(int x, int y);
+		bool IsValidPos(int x, int y);
 
-	void MarkMoveAtPos(int x, int y, MOVE m);
-	void ClearMoves();
+		void MarkMoveAtPos(int x, int y, MOVE m);
+		void ClearMoves();
 
-};
+	};
+
+} // Chesstris Namespace Ends here
+
 

@@ -4,6 +4,8 @@
 
 #define DIM_OF(_A_) sizeof(_A_)/sizeof(_A_[0])
 
+using namespace Chesstris;
+
 /*
  * ChessTris is a board game played on 8x8 Chess board with a single Knight.
  * The game is somewhat similar to 4-in-a-row.

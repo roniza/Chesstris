@@ -8,6 +8,7 @@
 #define KNIGHT 'K'
 #define STEPPED '*'
 
+using namespace Chesstris;
 using namespace std;
 
 void ChesstrisBoard::ClearPos(int x, int y)

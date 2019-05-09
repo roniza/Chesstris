@@ -1,12 +1,14 @@
 #include "IBoard.h"
 #include "IPiece.h"
 #include "IGame.h"
-#include "main.h"
+//#include "main.h"
 #include <iostream>
 #include <assert.h>
+
 #include "ChesstrisGame.h"
 
 using namespace std;
+using namespace Chesstris;
 
 int main(int argc, char* argv[])
 {

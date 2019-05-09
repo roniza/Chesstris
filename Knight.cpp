@@ -1,6 +1,6 @@
 #include "Knight.h"
 
-
+using namespace Chesstris;
 
 Knight::Knight()
 {
