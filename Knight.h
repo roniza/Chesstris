@@ -5,7 +5,6 @@
 namespace Chesstris {
 
 	/// A Knight game piece.
-	/// Currently not in use.
 	class Knight : public IPiece
 	{
 	public:

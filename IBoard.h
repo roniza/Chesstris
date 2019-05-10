@@ -1,6 +1,7 @@
 #pragma once
 
 namespace Chesstris {
+
 	/// An abstract game board
 	class IBoard
 	{

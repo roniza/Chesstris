@@ -1,7 +1,6 @@
 #include "IBoard.h"
 #include "IPiece.h"
 #include "IGame.h"
-//#include "main.h"
 #include <iostream>
 #include <assert.h>
 
@@ -10,6 +9,8 @@
 using namespace std;
 using namespace Chesstris;
 
+/// The main function handles command line arguments and then creates the game and runs 
+/// a very basic generic game loop usingthe IGame abstract interface
 int main(int argc, char* argv[])
 {
 	/// Command line argument: length of row that gives a score
@@ -30,7 +31,7 @@ int main(int argc, char* argv[])
 
 	IGame& game = (IGame&)TheGame;
 
-	// From here onward only abtract interfaces
+	// From here onward only abtract interfaces are used
 	game.start();
 
 	while (!game.ended())
@@ -49,5 +50,7 @@ int main(int argc, char* argv[])
 		}
 	}
 
+
 	game.EndShow();
+	cout << "Game over!" << endl;
 }

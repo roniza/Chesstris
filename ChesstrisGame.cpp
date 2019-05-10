@@ -6,7 +6,7 @@
 
 using namespace Chesstris;
 
-/*
+/*! \mainpage
  * ChessTris is a board game played on 8x8 Chess board with a single Knight.
  * The game is somewhat similar to 4-in-a-row.
  * In every move the position of the knight is marked with a *

@@ -4,7 +4,6 @@ namespace Chesstris {
 	class IBoard;
 
 	/// An abstract game piece class.
-	/// Currently not in use.
 	class IPiece
 	{
 		IBoard* _board;
