@@ -7,6 +7,6 @@ https://youtu.be/AzXuPvyvLlA
 The two knights placed on the board. 
 White begins. 
 Winner is the player that completed 4 in row stepped tiles. 
-If player that can’t move at his turn loses. 
+Player that can’t move at his turn loses. 
 Player can’t move to tiles that are guarded by the opponent. 
 Peace out
