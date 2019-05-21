@@ -10,7 +10,7 @@ using namespace std;
 using namespace Chesstris;
 
 /// The main function handles command line arguments and then creates the game and runs 
-/// a very basic generic game loop usingthe IGame abstract interface
+/// a very basic generic game loop using the IGame abstract interface
 int main(int argc, char* argv[])
 {
 	/// Command line argument: length of row that gives a score
